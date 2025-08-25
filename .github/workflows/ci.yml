@@ -1,23 +1,36 @@
 name: CI - DB Infra
 
 on:
-  push:
-    branches: ["main"]
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
+  push:
+    branches:
+      - main
 
 jobs:
-  terraform-lint:
+  terraform-ci:
     runs-on: ubuntu-latest
+
     steps:
+      # 1️⃣ Pegar o código do repositório
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # 2️⃣ Configurar Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.6.7  # ajuste para a versão que você usa
 
+      # 3️⃣ Verificar formatação dos arquivos
       - name: Terraform fmt
         run: terraform fmt -check
 
+      # 4️⃣ Inicializar Terraform (baixar providers)
+      - name: Terraform init
+        run: terraform init -backend=false
+
+      # 5️⃣ Validar arquivos Terraform
       - name: Terraform validate
         run: terraform validate
