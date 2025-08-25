@@ -27,10 +27,16 @@ jobs:
       - name: Terraform fmt
         run: terraform fmt -check
 
+       test-ci
       # 4️⃣ Inicializar Terraform (baixar providers)
       - name: Terraform init
         run: terraform init -backend=false
 
       # 5️⃣ Validar arquivos Terraform
+
+      - name: Terraform init
+        run: terraform init -backend=false
+
+       main
       - name: Terraform validate
         run: terraform validate
