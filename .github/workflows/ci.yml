@@ -26,6 +26,13 @@ jobs:
       # 3️⃣ Verificar formatação dos arquivos
       - name: Terraform fmt
         run: terraform fmt -check
+        
+      
+      # 4️⃣ Inicializar Terraform (baixar providers)
+      - name: Terraform init
+        run: terraform init -backend=false
+
+      # 5️⃣ Validar arquivos Terraform
 
        test-ci
       # 4️⃣ Inicializar Terraform (baixar providers)
