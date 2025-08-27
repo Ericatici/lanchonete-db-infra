@@ -17,6 +17,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+       nome-da-branch
+
       - name: Configurar credenciais AWS
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -24,6 +26,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_DEFAULT_REGION }}  
 
+       main
       # 2️⃣ Configurar Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
@@ -40,6 +43,8 @@ jobs:
         run: terraform init -backend=false
 
       # 5️⃣ Validar arquivos Terraform
+       nome-da-branch
+
 
        test-ci
       # 4️⃣ Inicializar Terraform (baixar providers)
@@ -47,6 +52,7 @@ jobs:
         run: terraform init -backend=false
 
       # 5️⃣ Validar arquivos Terraform
+       main
 
       - name: Terraform init
         run: terraform init -backend=false
