@@ -1,7 +1,7 @@
 provider "aws" {
   region = "us-east-2" # Ensure this matches your desired region
 }
-
+#
 resource "aws_db_instance" "lanchonete_db" {
   allocated_storage    = 20
   engine               = "mysql"
