@@ -17,3 +17,8 @@ output "db_name" {
   value       = aws_db_instance.lanchonete_db.db_name
   description = "Database name for the RDS instance"
 }
+
+output "db_instance_arn" {
+  value       = aws_db_instance.lanchonete_db.arn
+  description = "ARN of the RDS instance"
+}
