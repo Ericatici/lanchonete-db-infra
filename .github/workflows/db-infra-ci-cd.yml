@@ -3,12 +3,12 @@ name: DB Infra CI/CD
 on:
   push:
     branches: ["main"]
-    paths:
-      - "lanchonete-db-infra/**"
+    # paths:
+    #   - "lanchonete-db-infra/**"
   pull_request:
     branches: ["main"]
-    paths:
-      - "lanchonete-db-infra/**"
+    # paths:
+    #   - "lanchonete-db-infra/**"
 
 jobs:
   terraform:
