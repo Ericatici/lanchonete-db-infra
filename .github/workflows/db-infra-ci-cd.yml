@@ -29,19 +29,22 @@ jobs:
         with:
           terraform_version: 1.5.0 # Specify a compatible version
 
+      - name: Terraform Init
+        run: terraform init -input=false
+
       - name: Terraform fmt
         id: fmt
-        run: terraform fmt -check -recursive lanchonete-db-infra/
+        run: terraform fmt -check -recursive
         continue-on-error: true
 
       - name: Terraform validate
         id: validate
-        run: terraform validate lanchonete-db-infra/
+        run: terraform validate
 
       - name: Terraform plan
         id: plan
-        run: terraform plan -input=false -no-color -out=tfplan lanchonete-db-infra/
+        run: terraform plan -input=false -no-color -out=tfplan
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -input=false tfplan lanchonete-db-infra/
+        run: terraform apply -input=false tfplan
